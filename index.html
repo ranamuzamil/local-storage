@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Local Storage</title>
+</head>
+
+<body>
+
+    <div class="nav">
+        <button id="user-list">User List</button>
+        <button id="add-user">Add User</button>
+        <button id="delete-user">Delete User</button>
+        <button id="login-user">Login</button>
+    </div>
+
+    <div class="display" id="display">
+        <div class="user-list-inter" id="add-list-inter">
+            <div class="result" id="result">
+            </div>
+
+        </div>
+
+        <div class="add-user-inter" id="add-user-interface">
+            <form id="user-form">
+                <input id="first-name" type="text" placeholder="First Name" name="firstname" required />
+                <input id="last-name" type="text" placeholder="Last  Name" name="lastname" required />
+                <input id="e-mail" type="email" placeholder="Email" name="email" required />
+                <input id="id" type="number" placeholder="ID" name="id" required />
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
