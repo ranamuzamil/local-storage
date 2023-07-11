@@ -4,9 +4,9 @@ let deleteUser = document.getElementById("delete-user");
 let loginUser = document.getElementById("login-user");
 let userDisplay = document.getElementById("display");
 
-let adduserInter = document.getElementById("add-user-interface")
-let listuserInter = document.getElementById("add-list-inter")
-let userResultDiv = document.getElementById("result")
+let adduserInter = document.getElementById("add-user-interface");
+let listuserInter = document.getElementById("add-list-inter");
+let userResultDiv = document.getElementById("result");
 
 
 
@@ -18,37 +18,59 @@ userForm.addEventListener('submit', function(event){
   let lastName = document.getElementById("last-name").value;
   let email = document.getElementById("e-mail").value;
   let id = document.getElementById("id").value;
+  let submit = document.getElementById("submit")
 
-  let userData = {
-    firstname : firstName,
-    lastname : lastName,
-    email : email,
-    id : id
-  }
-  let storedData = localStorage.getItem('userData');
-  storedData = storedData ? JSON.parse(storedData) : [];
+  submit.addEventListener('click',() =>{
+
+    
+    let userData = {
+      firstname : firstName,
+      lastname : lastName,
+      email : email,
+      id : id
+    }
+    let storedData = localStorage.getItem('userData');
+    console.log(storedData[firstName]);
+    storedData = storedData ? JSON.parse(storedData) : [];
+    
+    // Add the new form data to the array
+    storedData.push(userData);
+    
+    
+    localStorage.setItem('userData', JSON.stringify(storedData));
+    
+    // Clear the form fields
+    userForm.reset();   
+    alert('Form data stored successfully!');
+  })
   
-  // Add the new form data to the array
-  storedData.push(userData);
-
-
-  localStorage.setItem('userData', JSON.stringify(storedData));
-      
-  // Clear the form fields
-  form.reset();
 })
- 
-
 
 
 addUser.addEventListener("click", ()=>{
     adduserInter.style.display = "block"
     listuserInter.style.display = "none"
-    document.getElementById("display").style.backgroundColor = "rgba(0, 0, 0, 0.37)"
-})
+    }
+)
 userList.addEventListener("click", ()=>{
     listuserInter.style.display = "block"
     adduserInter.style.display = "none"
-    document.getElementById("display").style.backgroundColor = "rgba(0, 0, 0, 0.1)"
 
 })
+
+
+// Get all navigation items
+const navItems = document.querySelectorAll('.nav-item');
+
+// Add event listener to each navigation item
+navItems.forEach((item) => {
+  item.addEventListener('click', function () {
+    // Remove the active class from all items
+    navItems.forEach((navItem) => {
+      navItem.classList.remove('active');
+    });
+
+    // Add the active class to the clicked item
+    this.classList.add('active');
+  });
+});

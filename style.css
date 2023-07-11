@@ -1,11 +1,12 @@
-body{
+body {
     margin: 0px;
     padding: 0px;
     background-size: cover;
-    background-image: linear-gradient(to right , rgba(255, 0, 0, 0.459) , rgba(0, 128, 0, 0.356)),url(./bg.jpg);
+    background-image: linear-gradient(to right, rgba(255, 0, 0, 0.459), rgba(0, 128, 0, 0.356)), url(./bg.jpg);
     display: flex;
 }
-.nav{
+
+.nav {
     background-color: rgba(0, 0, 0, 0.281);
     display: flex;
     flex-direction: column;
@@ -14,7 +15,8 @@ body{
     gap: 3rem;
     justify-content: center;
 }
-.nav>button{
+
+.nav>button {
     margin: 0px 5px;
     font-size: 1.5rem;
     color: rgb(207, 207, 207);
@@ -22,46 +24,61 @@ body{
     background-color: transparent;
     transition: 900ms;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
         background-color: rgba(0, 0, 0, 0.37);
         font-size: 1.7rem;
     }
 }
-.display{
+
+.display {
     background-color: rgba(0, 0, 0, 0.568);
     width: 100em;
     height: 100vh;
 }
-.add-user-inter{
+
+.add-user-inter>form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: 150vh;
     height: 100vh;
-    margin: 10rem 20rem;
 }
-.add-user-inter>form>input{
-    margin: 1rem 0rem;
+
+.add-user-inter>form>input {
     display: block;
     height: 3rem;
     width: 20rem;
     background-color: rgba(0, 0, 0, 0.336);
     color: aliceblue;
 }
-.add-user-inter>form>button{
+
+.add-user-inter>form>button {
     cursor: pointer;
     margin-top: 1rem;
     width: 20.2rem;
     height: 3rem;
     color: azure;
     background-color: rgba(153, 30, 30, 0.473);
-    &:hover{
+
+    &:hover {
         background-color: rgba(131, 13, 13, 0.726);
     }
 }
-#add-user-interface{
+
+#add-user-interface {
     display: none;
     position: absolute;
+    width: 100vh;
+    height: fit-content
 }
-.user-list-inter{
-    display: none;
-}
-.result{
+.result {
     margin: 10rem;
+}
+
+.nav-item.active {
+    background-color: rgba(0, 0, 0, 0.37);
+    font-size: 1.7rem;
 }
