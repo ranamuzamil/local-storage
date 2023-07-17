@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Example</title>
+</head>
+<body>
+  <h2>Form Example</h2>
+  
+  <form id="myForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br><br>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required><br><br>
+    
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea><br><br>
+    
+    <input type="submit" value="Submit">
+  </form>
+  
+  <div id="userData"></div>
+  
+  <script>
+    // Retrieve the form element
+    const form = document.getElementById('myForm');
+    
+    // Retrieve the userData element
+    const userDataElement = document.getElementById('userData');
+    
+    // Add submit event listener to the form
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+      
+      // Get form field values
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      // Create an object to store the form data
+      const formData = {
+        name: name,
+        email: email,
+        message: message
+      };
+      
+      // Retrieve existing stored data or initialize an empty array
+      let storedData = localStorage.getItem('formData');
+      storedData = storedData ? JSON.parse(storedData) : [];
+      
+      // Add the new form data to the array
+      storedData.push(formData);
+      
+      // Store the updated array in localStorage
+      localStorage.setItem('formData', JSON.stringify(storedData));
+      
+      // Clear the form fields
+      form.reset();
+      
+      // Display a success message
+      alert('Form data stored successfully!');
+      
+      // Display the form data
+      displayFormData();
+    });
+    
+    // Function to display the form data
+    function displayFormData() {
+      // Clear the userData element
+      userDataElement.innerHTML = '';
+      
+      // Retrieve the stored form data
+      const storedData = localStorage.getItem('formData');
+      
+      if (storedData) {
+        // Parse the stored data into an array of objects
+        const formDataArray = JSON.parse(storedData);
+        
+        // Create a div for each form data entry and append it to the userData element
+        formDataArray.forEach(function(formData, index) {
+          const dataDiv = document.createElement('div');
+          dataDiv.textContent = `Name: ${formData.name}, Email: ${formData.email}, Message: ${formData.message}`;
+          let nameelement = document.createElement("h1")
+          nameelement.innerHTML = `Name : ${formData.name}`
+          dataDiv.append(nameelement)
+          
+          // Create a delete button for each user
+          const deleteButton = document.createElement('button');
+          deleteButton.textContent = 'Delete';
+          deleteButton.addEventListener('click', function() {
+            deleteUserData(index);
+          });
+          
+          dataDiv.appendChild(deleteButton);
+          
+          userDataElement.appendChild(dataDiv);
+        });
+      }
+    }
+    
+    // Function to delete user data by index
+    function deleteUserData(index) {
+      let storedData = localStorage.getItem('formData');
+      
+      if (storedData) {
+        const formDataArray = JSON.parse(storedData);
+        
+        // Remove the user data at the specified index
+        formDataArray.splice(index, 1);
+        
+        // Update the stored data in localStorage
+        localStorage.setItem('formData', JSON.stringify(formDataArray));
+        
+        // Display the updated form data
+        displayFormData();
+      }
+    }
+    
+    // Call the displayFormData function on page load to display any existing data
+    displayFormData();
+  </script>
+</body>
+</html>

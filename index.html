@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./responsive.css">
     <title>Local Storage</title>
 </head>
 
@@ -19,9 +20,7 @@
 
     <div class="display" id="display">
         <div class="user-list-inter" id="add-list-inter">
-            <div class="result" id="result">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas corrupti
-                laborum aliquid quos a possimus, pariatur dolor exercitationem deleniti facere, hic, rerum labore ipsam
-                voluptates consectetur dolores nesciunt quae atque?
+            <div class="result" id="result">
             </div>
 
         </div>
@@ -34,6 +33,11 @@
                 <input id="id" type="number" placeholder="ID" name="id" required />
                 <input id="submit" type="submit" value="Submit">
             </form>
+        </div>
+        <div class="delete-user-inter" id="delete-user-inter">
+            <div class="del-form">
+                <button id="del-btn">Clear All</button>
+            </div>
         </div>
     </div>
     <script src="./script.js"></script>

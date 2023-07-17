@@ -2,7 +2,7 @@ body {
     margin: 0px;
     padding: 0px;
     background-size: cover;
-    background-image: linear-gradient(to right, rgba(255, 0, 0, 0.459), rgba(0, 128, 0, 0.356)), url(./bg.jpg);
+    background-image: linear-gradient(to right, rgba(255, 0, 0, 0.377), rgba(2, 255, 2, 0.219)), url(./bg.jpg);
     display: flex;
 }
 
@@ -32,9 +32,10 @@ body {
 }
 
 .display {
-    background-color: rgba(0, 0, 0, 0.568);
+    background-color: rgba(0, 0, 0, 0.2);
     width: 100em;
     height: 100vh;
+    transition: 800ms
 }
 
 .add-user-inter>form{
@@ -75,10 +76,39 @@ body {
     height: fit-content
 }
 .result {
-    margin: 10rem;
+    margin: 30vh;
+    color: rgb(199, 196, 196);
+    font-size: 3vh;
 }
 
 .nav-item.active {
     background-color: rgba(0, 0, 0, 0.37);
     font-size: 1.7rem;
 }
+#delete-user-inter{
+    display: none;
+}
+.delete-user-inter{
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.del-form{
+    height: 50vh;
+    width: 70vh;
+    background-color: rgba(165, 42, 42, 0);
+}
+.del-form>button{
+    width: 10rem;
+    height: 3rem;
+    background-color: rgba(255, 0, 0, 0.575);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    color: aliceblue;
+    cursor: pointer;
+    margin: 20vh 22vh;
+    &:hover{
+        background-color: rgb(255, 0, 0);
+    }
+}
+

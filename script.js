@@ -6,8 +6,11 @@ let userDisplay = document.getElementById("display");
 
 let adduserInter = document.getElementById("add-user-interface");
 let listuserInter = document.getElementById("add-list-inter");
+let deleteuserInter = document.getElementById("delete-user-inter");
+
 let userResultDiv = document.getElementById("result");
 
+let delBtn = document.getElementById("del-btn")
 
 
 let userForm = document.querySelector("#user-form");
@@ -29,8 +32,8 @@ userForm.addEventListener('submit', function(event){
       email : email,
       id : id
     }
+
     let storedData = localStorage.getItem('userData');
-    console.log(storedData[firstName]);
     storedData = storedData ? JSON.parse(storedData) : [];
     
     // Add the new form data to the array
@@ -41,21 +44,48 @@ userForm.addEventListener('submit', function(event){
     
     // Clear the form fields
     userForm.reset();   
-    alert('Form data stored successfully!');
-  })
-  
+    alert('Form data stored successfully!');    
+  })  
 })
+setInterval(() => {
+  let displaybefore = localStorage.getItem('userData')
+  if (displaybefore === null) {
+    userResultDiv.innerHTML = "STORAGE IS EMPTY"
+  } else {
+    userResultDiv.innerHTML = displaybefore    
+  }
+}, 1000);
+delBtn.addEventListener("click", ()=>{
+  localStorage.clear()
+})
+
+
 
 
 addUser.addEventListener("click", ()=>{
     adduserInter.style.display = "block"
     listuserInter.style.display = "none"
+    deleteuserInter.style.display = "none"
+    userDisplay.style.backgroundColor = "rgba(0, 0, 0, 0.7)"
     }
 )
 userList.addEventListener("click", ()=>{
     listuserInter.style.display = "block"
     adduserInter.style.display = "none"
-
+    deleteuserInter.style.display = "none"
+    userDisplay.style.backgroundColor = "rgba(0, 0, 0, 0.4)"
+})
+deleteUser.addEventListener("click", ()=>{
+  deleteuserInter.style.display = "flex"
+  listuserInter.style.display = "none"
+    adduserInter.style.display = "none"
+    userDisplay.style.backgroundColor = "rgba(210, 0, 0, 0.4)"
+})
+loginUser.addEventListener("click", ()=>{
+  deleteuserInter.style.display = "none"
+  listuserInter.style.display = "none"
+    adduserInter.style.display = "none"
+    userDisplay.style.backgroundColor = "rgba(0, 0, 0, 0.2)"
 })
 
 
