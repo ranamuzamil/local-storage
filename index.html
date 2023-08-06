@@ -4,64 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
-    <title>Local storage</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./responsive.css">
+    <title>Local Storage</title>
 </head>
 
 <body>
-    <div class="container">
-        <nav>
-            <ul>
-                <button id="list-btn" class="nav-item active">USER LIST</button>
-                <button id="add-btn" class="nav-item">ADD USER</button>
-                <button id="delete-btn" class="nav-item">DELETE USER</button>
-                <button id="login-btn" class="nav-item">LOGIN</button>
-            </ul>
-        </nav>
+    <div class="flex">
 
-        <div class="user-list" id="user-list">
 
+        <div class="nav">
+            <button class="nav-item active" id="user-list">User List</button>
+            <button class="nav-item" id="add-user">Add User</button>
+            <button class="nav-item" id="delete-user">Delete User</button>
+            <button class="nav-item" id="login-user">Login</button>
         </div>
 
-        <div class="add-user display-none" id="add-user">
+        <div class="display" id="display">
+            <div class="user-list-inter" id="add-list-inter">
+                <div class="result" id="result">
+                </div>
 
-            <h1>ADD USER</h1>
-            <form id="userForm">
-              <label for="username">Username:</label>
-              <input type="text" id="username" required><br>
-              <label for="email">Email:</label>
-              <input type="email" id="email" required><br>
-              <label for="age">Age:</label>
-              <input type="number" id="age" required><br>
-              <label for="id">ID:</label>
-              <input type="text" id="id" required><br>
-              <button type="submit">Login</button>
-            </form>
+            </div>
 
+            <div class="add-user-inter display-none" id="add-user-interface">
+                <form id="user-form">
+                    <input id="first-name" type="text" placeholder="First Name" name="firstname" required />
+                    <input id="last-name" type="text" placeholder="Last  Name" name="lastname" required />
+                    <input id="e-mail" type="email" placeholder="Email" name="email" required />
+                    <input id="id" type="number" placeholder="ID" name="id" required />
+                    <input id="submit" type="submit" value="Submit">
+                </form>
+            </div>
+            <div class="delete-user-inter display-none" id="delete-user-inter">
+                <div class="del-form">
+                    <button id="del-btn">Clear All</button>
+                </div>
+            </div>
+            <div class="login-user-inter display-none" id="login-user-inter">
+                <h1>Login</h1>
+                <form id="loginForm">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required><br>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
         </div>
-
-        <div class="delete-user display-none" id="delete-user">
-
-        </div>
-
-        <div class="login-user display-none" id="login-user">
-
-            <h1>Login</h1>
-            <form id="loginForm">
-                <label for="username">Username:</label>
-                <input type="text" id="username" required><br>
-                <label for="password">Password:</label>
-                <input type="password" id="password" required><br>
-                <button type="submit">Login</button>
-            </form>
-
-        </div>
-
-
-
-
     </div>
-
     <script src="./script.js"></script>
 </body>
 
