@@ -2,106 +2,84 @@ let userList = document.getElementById("user-list");
 let addUser = document.getElementById("add-user");
 let deleteUser = document.getElementById("delete-user");
 let loginUser = document.getElementById("login-user");
-let userDisplay = document.getElementById("display");
 
-let adduserInter = document.getElementById("add-user-interface");
-let listuserInter = document.getElementById("add-list-inter");
-let deleteuserInter = document.getElementById("delete-user-inter");
-
-let userResultDiv = document.getElementById("result");
-
-let delBtn = document.getElementById("del-btn")
-
-
-let userForm = document.querySelector("#user-form");
-userForm.addEventListener('submit', function(event){
-  event.preventDefault();
-  
-  let firstName = document.getElementById("first-name").value;
-  let lastName = document.getElementById("last-name").value;
-  let email = document.getElementById("e-mail").value;
-  let id = document.getElementById("id").value;
-  let submit = document.getElementById("submit")
-
-  submit.addEventListener('click',() =>{
-
-    
-    let userData = {
-      firstname : firstName,
-      lastname : lastName,
-      email : email,
-      id : id
-    }
-
-    let storedData = localStorage.getItem('userData');
-    storedData = storedData ? JSON.parse(storedData) : [];
-    
-    // Add the new form data to the array
-    storedData.push(userData);
-    
-    
-    localStorage.setItem('userData', JSON.stringify(storedData));
-    
-    // Clear the form fields
-    userForm.reset();   
-    alert('Form data stored successfully!');    
-  })  
-})
-setInterval(() => {
-  let displaybefore = localStorage.getItem('userData')
-  if (displaybefore === null) {
-    userResultDiv.innerHTML = "STORAGE IS EMPTY"
-  } else {
-    userResultDiv.innerHTML = displaybefore    
-  }
-}, 1000);
-delBtn.addEventListener("click", ()=>{
-  localStorage.clear();
-  alert('All user delete successfully!'); 
-})
+let listBtn = document.getElementById("list-btn");
+let addBtn = document.getElementById("add-btn");
+let deleteBtn = document.getElementById("delete-btn");
+let loginBtn = document.getElementById("login-btn");
 
 
 
-
-addUser.addEventListener("click", ()=>{
-    adduserInter.style.display = "block"
-    listuserInter.style.display = "none"
-    deleteuserInter.style.display = "none"
-    userDisplay.style.backgroundColor = "rgba(0, 0, 0, 0.7)"
-    }
-)
-userList.addEventListener("click", ()=>{
-    listuserInter.style.display = "block"
-    adduserInter.style.display = "none"
-    deleteuserInter.style.display = "none"
-    userDisplay.style.backgroundColor = "rgba(0, 0, 0, 0.4)"
-})
-deleteUser.addEventListener("click", ()=>{
-  deleteuserInter.style.display = "flex"
-  listuserInter.style.display = "none"
-    adduserInter.style.display = "none"
-    userDisplay.style.backgroundColor = "rgba(210, 0, 0, 0.4)"
-})
-loginUser.addEventListener("click", ()=>{
-  deleteuserInter.style.display = "none"
-  listuserInter.style.display = "none"
-    adduserInter.style.display = "none"
-    userDisplay.style.backgroundColor = "rgba(0, 0, 0, 0.2)"
-})
-
-
-// Get all navigation items
+if (userList.textContent === null) {
+    userList.innerHTML = "Storage is empty"        
+}
 const navItems = document.querySelectorAll('.nav-item');
 
-// Add event listener to each navigation item
 navItems.forEach((item) => {
   item.addEventListener('click', function () {
-    // Remove the active class from all items
     navItems.forEach((navItem) => {
       navItem.classList.remove('active');
     });
-
-    // Add the active class to the clicked item
     this.classList.add('active');
   });
 });
+
+
+listBtn.addEventListener("click", ()=> {
+  userList.style.display = "block"
+  addUser.style.display = "none"
+  deleteUser.style.display = "none"
+  loginUser.style.display = "none"
+})
+addBtn.addEventListener("click", ()=> {
+  userList.style.display = "none"
+  addUser.style.display = "block"
+  deleteUser.style.display = "none"
+  loginUser.style.display = "none"
+})
+deleteBtn.addEventListener("click", ()=> {
+  userList.style.display = "none"
+  addUser.style.display = "none"
+  deleteUser.style.display = "block"
+  loginUser.style.display = "none"
+})
+loginBtn.addEventListener("click", ()=> {
+  userList.style.display = "none"
+  addUser.style.display = "none"
+  deleteUser.style.display = "none"
+  loginUser.style.display = "block"
+})
+
+
+
+
+
+// Function to handle login attempt
+function login(event) {
+  event.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  // Check if the credentials match (You can use AJAX to authenticate with the server here)
+  if (checkCredentials(username, password)) {
+    // Store the user as logged in
+    localStorage.setItem('loggedInUser', username);
+    alert('Login successful!');
+    // Redirect to a logged-in page or perform other actions
+  } else {
+    alert('Invalid credentials. Please try again.');
+  }
+}
+
+// Function to check if the credentials are valid
+function checkCredentials(username, password) {
+  // In a real-world scenario, you would compare these credentials with the server's database
+  // For this example, we are using a hard-coded username and password
+  const validUsername = 'user123';
+  const validPassword = 'pass123';
+  return username === validUsername && password === validPassword;
+}
+
+// Add an event listener to the form for login submission
+const loginForm = document.getElementById('loginForm');
+loginForm.addEventListener('submit', login);
