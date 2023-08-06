@@ -56,7 +56,8 @@ setInterval(() => {
   }
 }, 1000);
 delBtn.addEventListener("click", ()=>{
-  localStorage.clear()
+  localStorage.clear();
+  alert('All user delete successfully!'); 
 })
 
 

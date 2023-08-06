@@ -3,9 +3,10 @@ body {
     padding: 0px;
     background-size: cover;
     background-image: linear-gradient(to right, rgba(255, 0, 0, 0.377), rgba(2, 255, 2, 0.219)), url(./bg.jpg);
+}
+.flex{
     display: flex;
 }
-
 .nav {
     background-color: rgba(0, 0, 0, 0.281);
     display: flex;
